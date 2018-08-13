@@ -10,7 +10,6 @@ import numpy as np
 """
 #img = cv2.imread("sample.jpg")
 #gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-"""
 
 image1 = cv2.imread("list.jpg", cv2.IMREAD_GRAYSCALE)
 #image2 = cv2.imread("try.jpg", cv2.IMREAD_GRAYSCALE)
@@ -39,7 +38,7 @@ cv2.imshow("img", image1)
 
 
 
-"""
+
 img1 = cv2.imread("list.jpg", cv2.IMREAD_GRAYSCALE)
 img2 = cv2.imread("try.jpg", cv2.IMREAD_GRAYSCALE)
 
@@ -56,3 +55,36 @@ print (len(matches))
 
 #cv2.imshow("matchingResults", matching_results)
 """
+
+image = cv2.imread("form2.jpg")
+height, width = image.shape[:2]
+
+i = 1
+name = "name"
+r1 = .10
+r2 = .20
+
+while (r2 < 0.7):
+    
+    start_row, start_col = int(height * r1), int(width * .51)
+    
+    end_row, end_col = int(height * r2), int (width * .80)
+    
+    #start_row, start_col = int(height * .10), int(width * .51)
+    
+    #end_row, end_col = int(height * .20), int (width * .80)
+    
+    cropped = image[start_row:end_row, start_col:end_col]
+    
+    #cv2.imshow("img", cropped)
+    name +=str(i)+".jpg"
+    cv2.imwrite(name, cropped)
+    name = "name"
+    i+=1
+    r1 += 0.1
+    r2 += 0.1
+    
+#cv2.imshow("img", cropped)
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
+
